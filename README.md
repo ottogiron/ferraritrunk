@@ -12,8 +12,9 @@ Backends are in charge of storing and retreiving job results
 ```go
 //Backend defines a data store for jobs to be persisted
 type Backend interface {
-  Persist(workerId string, jobID string, jobResults []processor.JobResult) error
-  JobResults(workerId string, jobID) ([]processor.JobResult, error)
+    Persist(jobResults []*worker.JobResult) error
+    JobResults(workerId string) ([]*worker.JobResult, error)
+    Job(jobID string) (*worker.JobResult, error)
 }
 ```
 
