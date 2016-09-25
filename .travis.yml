@@ -1,0 +1,16 @@
+sudo: required
+
+language: go
+go:
+  - 1.7.1
+
+services: 
+  - elasticsearch
+
+before_script:
+  - sleep 10
+
+env: 
+  - TEST_ELASTIC_BACKEND=true
+
+
