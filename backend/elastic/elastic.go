@@ -6,6 +6,7 @@ import (
 
 	"github.com/ottogiron/ferraritrunk/backend"
 	"github.com/ottogiron/ferraritrunk/config"
+	"github.com/ottogiron/ferraritrunk/registry"
 
 	"github.com/ottogiron/ferraritrunk/worker"
 	"github.com/pkg/errors"
@@ -24,6 +25,10 @@ const (
 	workerIDField = "worker_id"
 	jobIDField    = "job_id"
 )
+
+func init() {
+	registry.RegisterBackendFactory(factory, schema)
+}
 
 func factory(config config.Config) (backend.Backend, error) {
 	urls := strings.Split(config.GetString(urlsKey), ",")
