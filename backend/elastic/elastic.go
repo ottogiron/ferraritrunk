@@ -89,7 +89,7 @@ func (e *elasticBackend) Persist(jobResults []*worker.JobResult) error {
 		Bulk().
 		Index(e.index).
 		Type(docType).
-		Refresh("true")
+		Refresh(e.refresh)
 
 	for _, jr := range jobResults {
 		doc := elastic.NewBulkIndexRequest().Index(e.index).Type(docType).Doc(jr)

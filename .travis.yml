@@ -11,7 +11,7 @@ services:
   - elasticsearch
 
 before_script:
-  - sleep 10
+  - sleep 20
 
 env: 
   - TEST_ELASTIC_BACKEND=true

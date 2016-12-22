@@ -46,7 +46,7 @@ func TestBackend(t *testing.T) {
 	config.Set(setSniffKey, false)
 	config.Set(urlsKey, "http://127.0.0.1:9200")
 	config.Set(indexKey, "workers_test")
-	config.Set(refreshIndexKey, true)
+	config.Set(refreshIndexKey, "true")
 	b, err := factory(config)
 
 	if err != nil {
