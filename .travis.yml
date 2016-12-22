@@ -7,11 +7,15 @@ go:
 install:
   - mkdir -p $GOPATH/bin
   - curl https://glide.sh/get | sh
+
+before_install:
+  - curl -O https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.3.0/elasticsearch-2.3.0.deb && sudo dpkg -i --force-confnew elasticsearch-2.3.0.deb && sudo service elasticsearch restart  
+
 services: 
   - elasticsearch
 
 before_script:
-  - ./backend/elastic/wait.sh
+    - sleep 10
 
 env: 
   - TEST_ELASTIC_BACKEND=true
