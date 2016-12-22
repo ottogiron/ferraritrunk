@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"strings"
 
-	"gopkg.in/olivere/elastic.v3"
+	"gopkg.in/olivere/elastic.v2"
 
 	"github.com/ottogiron/ferraritrunk/backend"
 	"github.com/ottogiron/ferraritrunk/config"
@@ -67,13 +67,20 @@ func new(client *elastic.Client, config config.Config) (backend.Backend, error) 
 			}
 		}
 	}`
-	_, err := client.PutMapping().Type(docType).BodyString(mapping).Do(context.TODO())
+
+	index := config.GetString(indexKey)
+	refresh := config.GetString(refreshIndexKey)
+
+	_, err := client.CreateIndex(index).Do(context.TODO())
+	if err != nil {
+		return nil, errors.Wrapf(err, "Failed to create index %s", index)
+	}
+
+	_, err = client.PutMapping().Index(index).Type(docType).BodyString(mapping).Do(context.TODO())
 
 	if err != nil {
 		return nil, errors.Wrapf(err, "Failed to define default mappings for worker_id and job_id %s", mapping)
 	}
-	index := config.GetString(indexKey)
-	refresh := config.GetString(refreshIndexKey)
 	return &elasticBackend{client, index, refresh}, nil
 }
 
