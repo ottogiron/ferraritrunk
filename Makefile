@@ -14,15 +14,18 @@ EXTRA_BUILD_VARS := CGO_ENABLED=0 GOARCH=amd64
 SOURCE_DIRS ?= $(shell go list ./... | grep -v /vendor/)
 BACKEND_PATH := $(shell go list)/backend/$(BACKEND_NAME)
 
-all: test 
+all:  test 
 
 build-release: container
+
+install-dependencies: 
+	glide install
 
 lint:
 	@go fmt $(SOURCE_DIRS)
 	@go vet $(SOURCE_DIRS)
 
-test: lint
+test: install-dependencies lint
 	 @go test -v $(SOURCE_DIRS) -cover -bench .
 
 test-backend: lint 

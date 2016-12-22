@@ -6,6 +6,8 @@ import (
 
 	"gopkg.in/olivere/elastic.v2"
 
+	"context"
+
 	"github.com/ottogiron/ferraritrunk/backend"
 	"github.com/ottogiron/ferraritrunk/config"
 )
@@ -29,7 +31,8 @@ func setUp(tb testing.TB) {
 }
 
 func tearDown(tb testing.TB) {
-	_, err := client.DeleteIndex(testIndex).Do()
+
+	_, err := client.DeleteIndex(testIndex).Do(context.Background())
 	if err != nil {
 		tb.Fatalf("Failed to remove index %s", err)
 	}

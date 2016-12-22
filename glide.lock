@@ -1,0 +1,22 @@
+hash: 01834b0bc332e4647764a0b1c857e0b716f644383d463171be6cc01b77ca6dd8
+updated: 2016-12-21T22:50:00.823381344-06:00
+imports:
+- name: github.com/pkg/errors
+  version: 645ef00459ed84a119197bfb8d8205042c6df63d
+- name: github.com/spf13/cast
+  version: 24b6558033ffe202bf42f0f3b870dcc798dd2ba8
+- name: golang.org/x/net
+  version: 4be9b97e3a30d0b6554b360a8e10c88c059bba23
+  subpackages:
+  - context
+  - context/ctxhttp
+- name: gopkg.in/olivere/elastic.v2
+  version: b272fab42387a42585235d56f8c6b53b13ddfb7d
+- name: gopkg.in/olivere/elastic.v3
+  version: b272fab42387a42585235d56f8c6b53b13ddfb7d
+- name: gopkg.in/olivere/elastic.v5
+  version: b272fab42387a42585235d56f8c6b53b13ddfb7d
+  subpackages:
+  - backoff
+  - uritemplates
+testImports: []

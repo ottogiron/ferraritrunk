@@ -1,0 +1,6 @@
+package: github.com/ottogiron/ferraritrunk
+import:
+- package: github.com/pkg/errors
+  version: ^0.8.0
+- package: github.com/spf13/cast
+- package: gopkg.in/olivere/elastic.v2
