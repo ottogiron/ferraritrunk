@@ -67,7 +67,7 @@ func new(client *elastic.Client, config config.Config) (backend.Backend, error) 
 			}
 		}
 	}`
-	_, err := client.PutMapping().Type(docType).BodyString(mapping).Do(context.Background())
+	_, err := client.PutMapping().Type(docType).BodyString(mapping).Do(context.TODO())
 
 	if err != nil {
 		return nil, errors.Wrapf(err, "Failed to define default mappings for worker_id and job_id %s", mapping)
@@ -95,7 +95,7 @@ func (e *elasticBackend) Persist(jobResults []*worker.JobResult) error {
 		doc := elastic.NewBulkIndexRequest().Index(e.index).Type(docType).Doc(jr)
 		bulkReq.Add(doc)
 	}
-	_, err := bulkReq.Do(context.Background())
+	_, err := bulkReq.Do(context.TODO())
 
 	if err != nil {
 		return errors.Wrapf(err, "Failed to persist list of processed jobs workerID", workerID)
@@ -109,7 +109,7 @@ func (e *elasticBackend) JobResults(workerID string) ([]*worker.JobResult, error
 		Search(e.index).
 		Type(docType).
 		Query(query).
-		Do(context.Background())
+		Do(context.TODO())
 
 	if err != nil {
 		return nil, errors.Wrapf(err, "Failed to retreive jobs for workerID %s", workerID)
@@ -136,7 +136,7 @@ func (e *elasticBackend) Job(jobID string) (*worker.JobResult, error) {
 		Search(e.index).
 		Type(docType).
 		Query(query).
-		Do(context.Background())
+		Do(context.TODO())
 
 	if err != nil {
 		return nil, errors.Wrapf(err, "Failed to retreive job for jobID %s", jobID)
