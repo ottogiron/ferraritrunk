@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"strings"
 
-	"gopkg.in/olivere/elastic.v2"
+	"gopkg.in/olivere/elastic.v3"
 
 	"github.com/ottogiron/ferraritrunk/backend"
 	"github.com/ottogiron/ferraritrunk/config"

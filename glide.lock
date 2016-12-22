@@ -1,5 +1,5 @@
-hash: 01834b0bc332e4647764a0b1c857e0b716f644383d463171be6cc01b77ca6dd8
-updated: 2016-12-21T22:50:00.823381344-06:00
+hash: 5e5c3eae89c4f7d802dc536588696fb3b5bf5ab32560361e47496cbe9d670d8b
+updated: 2016-12-21T23:38:40.581516225-06:00
 imports:
 - name: github.com/pkg/errors
   version: 645ef00459ed84a119197bfb8d8205042c6df63d
@@ -10,8 +10,6 @@ imports:
   subpackages:
   - context
   - context/ctxhttp
-- name: gopkg.in/olivere/elastic.v2
-  version: b272fab42387a42585235d56f8c6b53b13ddfb7d
 - name: gopkg.in/olivere/elastic.v3
   version: b272fab42387a42585235d56f8c6b53b13ddfb7d
 - name: gopkg.in/olivere/elastic.v5
@@ -19,4 +17,6 @@ imports:
   subpackages:
   - backoff
   - uritemplates
-testImports: []
+testImports:
+- name: gopkg.in/olivere/elastic.v2
+  version: b272fab42387a42585235d56f8c6b53b13ddfb7d
